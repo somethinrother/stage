@@ -1,0 +1,12 @@
+<div class='content box'>
+  <h1 class='panel-heading'>Edit your campaign</h1>
+  <form class='field panel-heading' {{action 'updateCampaign' on='submit'}} data-test-campaigns='edit-form'>
+    {{form-input label='Title' field='title' type='input' placeholder=model.title value=model.title}}
+    {{form-input label='Description' field='description' type='input' placeholder=model.description value=model.description}}
+
+    <button class='button' type='submit' name='button'>submit</button>
+    {{#link-to 'authenticated.campaigns.index' class='button'}}
+      back
+    {{/link-to}}
+  </form>
+</div>
