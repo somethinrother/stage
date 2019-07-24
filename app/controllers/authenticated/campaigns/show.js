@@ -11,5 +11,5 @@ export default Controller.extend({
   currentUserId: alias('currentUser.user.id'),
   currentUserIsGm: computed('campaign', function() {
     return this.ownerId === this.currentUserId;
-  }),
+  })
 });
