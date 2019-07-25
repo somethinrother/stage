@@ -1,7 +1,20 @@
 <div class='content panel box'>
   <h1 class='panel-heading'>{{campaign.title}}</h1>
 
-  {{outlet}}
+  <div class="tabs">
+    <ul>
+      <li><a>Overview</a></li>
+      <li><a>Chapters</a></li>
+      <li class="is-active"><a>Locations</a></li>
+      <li><a>Party</a></li>
+      <li><a>Blue Booking</a></li>
+      <li><a>NPC's</a></li>
+    </ul>
+  </div>
+
+  <div class='box'>
+    {{outlet}}
+  </div>
 
   {{#link-to 'authenticated.campaigns.index' class='button'}}
     Back
