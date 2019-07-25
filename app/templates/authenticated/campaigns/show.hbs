@@ -1,6 +1,14 @@
 <div class='content panel box'>
-  <h1 class='panel-heading'>{{model.title}}</h1>
-  <p class='panel-block'>{{model.description}}</p>
+  <h1 class='panel-heading'>{{campaign.title}}</h1>
+  <p class='panel-block'>{{campaign.description}}</p>
+
+  <div class='panel box'>
+    <h3>Locations</h3>
+    {{#each locations as |location|}}
+      <h4 class='panel-heading'>{{location.name}}</h4>
+      <p class='panel-block'>{{location.description}}</p>
+    {{/each}}
+  </div>
 
   {{#link-to 'authenticated.campaigns.index' class='button'}}
     Back

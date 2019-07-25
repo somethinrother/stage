@@ -7,6 +7,7 @@ export default Controller.extend({
   currentUser: service('current-user'),
   campaign: alias('model'),
   owner: alias('campaign.user'),
+  locations: alias('campaign.locations'),
   ownerId: alias('owner.id'),
   currentUserId: alias('currentUser.user.id'),
   currentUserIsGm: computed('campaign', function() {
