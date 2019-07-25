@@ -16,7 +16,9 @@ Router.map(function() {
   this.route('authenticated', { path: '' }, function() {
     this.route('campaigns', { path: '' }, function() {
       this.route('index', { path: '/' });
-      this.route('show', { path: '/campaigns/:id' });
+      this.route('show', { path: '/campaigns/:id' }, function() {
+        this.route('locations');
+      });
       this.route('new', { path: '/campaigns/new' });
       this.route('edit', { path: '/campaigns/:id/edit' })
     });
