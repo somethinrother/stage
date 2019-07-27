@@ -1,5 +1,9 @@
 export default function() {
+  // CAMPAIGN ROUTES
   this.get('/campaigns');
+  this.get('/campaigns/:id')
+
+  // USER ROUTES
   this.get('/me', function(db) {
     return db.users.all()[0];
   });
@@ -12,6 +16,7 @@ export default function() {
     return db.users.create(attrs);
   });
 
+  // SESSION ROUTES
   this.post('http://localhost:3000/oauth/token', function() {
     return {
       'access_token': 'acbde',

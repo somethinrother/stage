@@ -4,12 +4,7 @@
     {{#each model.campaigns as |campaign|}}
       {{#link-to 'authenticated.campaigns.show' campaign class='panel-block' data-test-campaigns='campaign-title'}}
         {{campaign.title}}
-
-        <button type="button" name="button" class='button is-small'>
-          {{#link-to 'authenticated.campaigns.edit' campaign data-test-campaigns='campaign-edit'}}
-            edit
-          {{/link-to}}
-        </button>
+        <GmLink @campaign={{campaign}} />
       {{/link-to}}
     {{/each}}
   </div>
