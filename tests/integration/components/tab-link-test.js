@@ -12,13 +12,14 @@ module('Integration | Component | tab-link', function(hooks) {
   hooks.beforeEach(async function() {
     const user = await newSession(this);
     const campaign = server.create('campaign', { user });
-    this.set('campaign', campaign)
+    this.set('campaign', campaign);
+    this.owner.setupRouter();
   });
 
   test('it renders with the correct route as href', async function(assert) {
     await render(hbs`<TabLink @link='locations' @model={{campaign}} />`);
-    const element = document.querySelector('[data-test-tab-link="locations"]')
 
-    assert.equal(element.href.trim(), 'authenticated.campaigns.show.locations');
+    assert.dom('[data-test-tab-link="locations"]').exists();
+    assert.dom('[data-test-tab-link="locations"]').hasAttribute('href', '/campaigns/1/locations')
   });
 });
