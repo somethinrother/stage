@@ -1,9 +1,7 @@
 <div class='panel'>
   <h1 class='panel-heading'>{{campaign.title}}</h1>
   <h4>Edit your campaign?</h4>
-  {{#link-to 'authenticated.campaigns.edit' campaign data-test-campaigns='campaign-edit'}}
-    edit
-  {{/link-to}}
+  <GmLink @campaign={{campaign}} />
   <div class='tabs'>
     <ul>
       <li><a>Overview</a></li>

@@ -1,0 +1,8 @@
+{{#if currentUserIsGm}}
+  <button type="button" name="button" class='button is-small'>
+    {{!-- TODO: Make this less specific --}}
+      {{#link-to 'authenticated.campaigns.edit' campaign data-test-campaigns='campaign-edit'}}
+        edit
+      {{/link-to}}
+  </button>
+{{/if}}
