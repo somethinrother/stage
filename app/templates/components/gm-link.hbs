@@ -1,7 +1,7 @@
 {{#if currentUserIsGm}}
-  <button type="button" name="button" class='button is-small'>
+  <button type="button" name="button" class='button is-small' data-test-gm-link='campaign-edit'>
     {{!-- TODO: Make this less specific --}}
-      {{#link-to 'authenticated.campaigns.edit' campaign data-test-campaigns='campaign-edit'}}
+      {{#link-to 'authenticated.campaigns.edit' campaign}}
         edit
       {{/link-to}}
   </button>
