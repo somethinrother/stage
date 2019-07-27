@@ -1,6 +1,19 @@
-<div class='content panel box'>
-  <h1 class='panel-heading'>{{model.title}}</h1>
-  <p class='panel-block'>{{model.description}}</p>
+<div class='panel'>
+  <h1 class='panel-heading'>{{campaign.title}}</h1>
+  <div class='tabs'>
+    <ul>
+      <li><a>Overview</a></li>
+      <li><a>Chapters</a></li>
+      <TabLink @link='locations' @model={{campaign}} />
+      <li><a>Party</a></li>
+      <li><a>Blue Booking</a></li>
+      <li><a>NPC's</a></li>
+    </ul>
+  </div>
+
+  <div class='content'>
+    {{outlet}}
+  </div>
 
   {{#link-to 'authenticated.campaigns.index' class='button'}}
     Back
