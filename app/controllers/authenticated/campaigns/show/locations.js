@@ -10,6 +10,12 @@ export default Controller.extend({
 
   actions: {
     async createLocation() {
+      // TODO: proper error logging in here
+      let location = this.model.location;
+      let campaign = location.campaign;
+      location.save().then(() => {
+        this.transitionToRoute('authenticated.campaigns.show.locations', campaign);
+      });
     },
     async updateLocation() {
     },

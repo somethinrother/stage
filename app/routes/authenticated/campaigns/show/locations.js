@@ -12,8 +12,9 @@ export default Route.extend({
     }).then(function(locations) {
       return locations;
     });
-    let location = this.store.createRecord('location', {
-      campaign: this.store.findRecord('campaign', campaignId)
+    let location = this.store.createRecord('location');
+    this.store.findRecord('campaign', campaignId).then(function(campaign) {
+      location.set('campaign', campaign)
     });
     let promises = {
       locations,
