@@ -1,3 +1,14 @@
 {{#each locations as |location|}}
   <p class='panel-block mb-0'>{{location.name}} - {{location.description}}</p>
 {{/each}}
+
+<h4 class='panel-heading'>Create a New Location</h4>
+<form class='panel-heading' {{action 'createLocation' on='submit'}} data-test-campaigns='new-form'>
+  {{form-input label='Name' field='name' type='input' placeholder="Enter your location's name" value=model.location.name}}
+  {{form-input label='Description' field='description' type='input' placeholder="Enter your location's description" value=model.location.description}}
+
+  <button class='button' type='submit' name='button'>submit</button>
+  {{#link-to 'authenticated.campaigns.index' class='button'}}
+    back
+  {{/link-to}}
+</form>
