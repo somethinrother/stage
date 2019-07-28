@@ -19,7 +19,8 @@ export default Controller.extend({
     },
     async updateLocation() {
     },
-    async deleteLocation() {
+    async deleteLocation(location) {
+      location.destroyRecord();
     }
   }
 });
