@@ -1,7 +1,7 @@
 {{#each locations as |location|}}
   <p class='panel-block mb-0'>
     {{location.name}} - {{location.description}}
-    <button type="button" name="button" {{action 'deleteLocation' location}}>delete</button>
+    <button class='button' type='button' name='button' {{action 'deleteLocation' location}}>delete</button>
   </p>
 {{/each}}
 
