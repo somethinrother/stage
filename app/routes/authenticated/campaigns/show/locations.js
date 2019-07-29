@@ -16,11 +16,10 @@ export default Route.extend({
     this.store.findRecord('campaign', campaignId).then(function(campaign) {
       location.set('campaign', campaign)
     });
-    let promises = {
+
+    return hash({
       locations,
       location
-    };
-
-    return hash(promises);
+    });
   }
 });
