@@ -17,10 +17,23 @@ export default Controller.extend({
         this.transitionToRoute('authenticated.campaigns.show.locations', campaign);
       });
     },
-    async updateLocation() {
+    async updateLocation(location) {
+      let campaign = location.campaign;
+      location.save().then(() => {
+        this.transitionToRoute('authenticated.campaigns.show.locations', campaign);
+      });
     },
     async deleteLocation(location) {
       location.destroyRecord();
+    },
+    async toggleEdit(location) {
+      const element = document.querySelector(`[data-toggle-selector="${location.id}"]`)
+      const classList = element.classList;
+      if (classList.contains('hidden')) {
+        classList.remove('hidden')
+      } else {
+        classList.add('hidden')
+      }
     }
   }
 });

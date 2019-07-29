@@ -19,7 +19,9 @@ Router.map(function() {
       this.route('show', { path: '/campaigns/:campaign_id' }, function() {
         this.route('overview');
         this.route('chapters');
-        this.route('locations');
+        this.route('locations', function() {
+          this.route('edit', { path: '/:location_id/edit' })
+        });
         this.route('party');
         this.route('blue-booking');
         this.route('characters');
