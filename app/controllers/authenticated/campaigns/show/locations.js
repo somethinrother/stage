@@ -17,12 +17,6 @@ export default Controller.extend({
         this.transitionToRoute('authenticated.campaigns.show.locations', campaign);
       });
     },
-    async updateLocation(location) {
-      let campaign = location.campaign;
-      location.save().then(() => {
-        this.transitionToRoute('authenticated.campaigns.show.locations', campaign);
-      });
-    },
     async deleteLocation(location) {
       location.destroyRecord();
     },

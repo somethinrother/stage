@@ -1,0 +1,9 @@
+<form class='panel-heading' {{action 'saveLocation' on='submit'}} data-test-campaigns='update-form'>
+  {{form-input label='Name' field='name' type='input' placeholder="Enter your location's new name" value=model.name}}
+  {{form-input label='Description' field='description' type='input' placeholder="Enter your location's new description" value=model.description}}
+
+  <button class='button' type='submit' name='button'>submit</button>
+  {{#link-to 'authenticated.campaigns.show.locations' class='button'}}
+    cancel
+  {{/link-to}}
+</form>

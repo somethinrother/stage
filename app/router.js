@@ -20,7 +20,7 @@ Router.map(function() {
         this.route('overview');
         this.route('chapters');
         this.route('locations', function() {
-          this.route('edit', { path: '/:location_id/edit' })
+          this.route('form', { path: '/:location_id/form' })
         });
         this.route('party');
         this.route('blue-booking');
