@@ -27,13 +27,15 @@ export default Controller.extend({
       location.destroyRecord();
     },
     async toggleEdit(location) {
-      const element = document.querySelector(`[data-toggle-selector="${location.id}"]`)
-      const classList = element.classList;
-      if (classList.contains('hidden')) {
-        classList.remove('hidden')
-      } else {
-        classList.add('hidden')
-      }
+      const elements = document.querySelectorAll(`[data-toggle-selector="${location.id}"]`);
+      elements.forEach(function(element) {
+        const classList = element.classList;
+        if (classList.contains('hidden')) {
+          classList.remove('hidden')
+        } else {
+          classList.add('hidden')
+        }
+      });
     }
   }
 });
