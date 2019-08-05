@@ -18,6 +18,7 @@ module('Acceptance | Campaigns | Show | Locations', function(hooks) {
   });
 
   test('can create a new location', async function(assert) {
+    
   });
 
   test('can update a new location', async function(assert) {
