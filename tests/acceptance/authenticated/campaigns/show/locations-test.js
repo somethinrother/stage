@@ -15,10 +15,10 @@ module('Acceptance | Campaigns | Show | Locations', function(hooks) {
     currentUser = this.owner.factoryFor('service:current-user').create();
     this.set('currentUser', currentUser);
     campaign = server.create('campaign');
-    await visit(`/campaigns/${campaign.id}/locations`);
   });
 
   test('can create a new location', async function(assert) {
+    await visit(`/campaigns/${campaign.id}/locations`);
     await click('[data-test-locations="create"] a');
     await fillIn('[data-test-form="name"] input', 'Three Rivers');
     await fillIn('[data-test-form="description"] input', 'A small town, full of ta\'veren');
@@ -27,9 +27,17 @@ module('Acceptance | Campaigns | Show | Locations', function(hooks) {
     assert.dom('[data-test-locations="info"]').hasText('Three Rivers - A small town, full of ta\'veren');
   });
 
-  // test('can update a new location', async function(assert) {
-  // });
-  //
+  test('can update a location', async function(assert) {
+    server.create('location', { campaignId: campaign.id });
+    await visit(`/campaigns/${campaign.id}/locations`);
+    await click('[data-test-locations="edit"] a');
+    await fillIn('[data-test-form="name"] input', 'Three Rivers');
+    await fillIn('[data-test-form="description"] input', 'A small town, full of ta\'veren');
+    await click('[data-test-locations-form="submit"]');
+    await visit(`/campaigns/${campaign.id}/locations`);
+    assert.dom('[data-test-locations="info"]').hasText('Three Rivers - A small town, full of ta\'veren');
+  });
+
   // test('can delete a new location', async function(assert) {
   // });
 });

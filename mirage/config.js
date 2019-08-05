@@ -19,9 +19,15 @@ export default function() {
     return schema.locations.where(query);
   });
 
+  this.patch('/locations/:id', function(db, request) {
+    const attrs = JSON.parse(request.requestBody).data.attributes;
+    const location = db.locations.find(request.params.id);
+    return location.update(attrs);
+  });
+
   this.post('/locations', function(db, request) {
     const campaign = db.campaigns.all().models[0];
-    let attrs = JSON.parse(request.requestBody).data.attributes;
+    const attrs = JSON.parse(request.requestBody).data.attributes;
     attrs['campaignId'] = campaign.id;
     return db.locations.create(attrs);
   });
