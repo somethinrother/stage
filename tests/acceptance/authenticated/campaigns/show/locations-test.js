@@ -38,6 +38,11 @@ module('Acceptance | Campaigns | Show | Locations', function(hooks) {
     assert.dom('[data-test-locations="info"]').hasText('Three Rivers - A small town, full of ta\'veren');
   });
 
-  // test('can delete a new location', async function(assert) {
-  // });
+  test('can delete a new location', async function(assert) {
+    server.create('location', { campaignId: campaign.id });
+    await visit(`/campaigns/${campaign.id}/locations`);
+    assert.dom('[data-test-locations="info"]').exists();
+    await click('[data-test-locations="delete"]');
+    assert.dom('[data-test-locations="info"]').doesNotExist();
+  });
 });

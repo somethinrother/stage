@@ -32,6 +32,8 @@ export default function() {
     return db.locations.create(attrs);
   });
 
+  this.delete('/locations/:id');
+
   // USER ROUTES
   this.get('/me', function(db) {
     return db.users.all()[0];
