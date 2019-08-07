@@ -1,7 +1,38 @@
+import { isEmpty } from '@ember/utils';
+
 export default function() {
   // CAMPAIGN ROUTES
   this.get('/campaigns');
-  this.get('/campaigns/:id')
+  this.get('/campaigns/:id');
+
+  // LOCATION ROUTES
+  this.get('/locations', function (schema, request) {
+    if (isEmpty(request.queryParams)) {
+      return schema.locations.all();
+    }
+
+    let query = {};
+    if (request.queryParams['filter[campaign_id]']) {
+      query.campaignId = request.queryParams['filter[campaign_id]'];
+    }
+
+    return schema.locations.where(query);
+  });
+
+  this.patch('/locations/:id', function(db, request) {
+    const attrs = JSON.parse(request.requestBody).data.attributes;
+    const location = db.locations.find(request.params.id);
+    return location.update(attrs);
+  });
+
+  this.post('/locations', function(db, request) {
+    const campaign = db.campaigns.all().models[0];
+    const attrs = JSON.parse(request.requestBody).data.attributes;
+    attrs['campaignId'] = campaign.id;
+    return db.locations.create(attrs);
+  });
+
+  this.delete('/locations/:id');
 
   // USER ROUTES
   this.get('/me', function(db) {

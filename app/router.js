@@ -16,10 +16,12 @@ Router.map(function() {
   this.route('authenticated', { path: '' }, function() {
     this.route('campaigns', { path: '' }, function() {
       this.route('index', { path: '/' });
-      this.route('show', { path: '/campaigns/:id' }, function() {
+      this.route('show', { path: '/campaigns/:campaign_id' }, function() {
         this.route('overview');
         this.route('chapters');
-        this.route('locations');
+        this.route('locations', function() {
+          this.route('form', { path: '/:location_id/form' })
+        });
         this.route('party');
         this.route('blue-booking');
         this.route('characters');

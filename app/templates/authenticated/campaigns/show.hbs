@@ -1,9 +1,11 @@
 <div class='panel'>
   <h1 class='panel-heading'>{{campaign.title}}</h1>
-  <h4>Edit your campaign?</h4>
-  <GmLink @campaign={{campaign}} />
+  {{!-- TODO: Put this code into the Overview tab when it exists --}}
+  {{!-- <h4>Edit your campaign?</h4>
+  <EditLink @campaign={{campaign}} /> --}}
   <div class='tabs'>
     <ul>
+      {{!-- TODO: Create the tab-list component that applies the is-active class on the correct link --}}
       <li><a>Overview</a></li>
       <li><a>Chapters</a></li>
       <TabLink @link='locations' @model={{campaign}} />

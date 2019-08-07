@@ -4,7 +4,7 @@
     {{#each model.campaigns as |campaign|}}
       {{#link-to 'authenticated.campaigns.show' campaign class='panel-block' data-test-campaigns='campaign-title'}}
         {{campaign.title}}
-        <GmLink @campaign={{campaign}} />
+        <EditLink @campaign={{campaign}} />
       {{/link-to}}
     {{/each}}
   </div>

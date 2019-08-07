@@ -1,3 +1,21 @@
+<div class='edit-form hidden' data-toggle-selector={{location.id}}>
+  {{outlet}}
+</div>
+
 {{#each locations as |location|}}
-  <p class='panel-block mb-0'>{{location.name}} - {{location.description}}</p>
+  <p class='panel-block mb-0' data-toggle-selector={{location.id}}>
+    <span data-test-locations='info'>{{location.name}} - {{location.description}}</span>
+    <button data-test-locations='edit' type='button' name='button' class='button is-small' {{action 'toggleEdit' location}}>
+      {{#link-to 'authenticated.campaigns.show.locations.form' location}}
+        edit
+      {{/link-to}}
+    </button>
+    <button data-test-locations='delete' class='button is-small' type='button' name='button' {{action 'deleteLocation' location}}>delete</button>
+  </p>
 {{/each}}
+
+<div data-test-locations='create'>
+  {{#link-to 'authenticated.campaigns.show.locations.form' model.location}}
+    Create a New Location
+  {{/link-to}}
+</div>
